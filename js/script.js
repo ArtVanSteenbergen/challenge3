@@ -37,10 +37,10 @@ $(document).ready(function() {
   init = new TimelineMax();
 
   function showDate(date) {
-    if (DATEONSCREEN.html() != '') {TweenMax.fromTo(DATEONSCREEN, 3, {y: '-150%',x: '-50%', autoAlpha: 1, ease: Elastic.easeOut},{y: '-50%',x: '-50%', autoAlpha: 1, ease: Elastic.easeOut});}
+    if (DATEONSCREEN.html() != '') {TweenMax.from(DATEONSCREEN, 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});}
     DATEONSCREEN.html(date);
   }
-
+TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
   // return st, nd, rd or th to day of month
   function nth(d) {
     if (d > 3 && d < 21)
@@ -154,7 +154,6 @@ $(document).ready(function() {
     TweenMax.to('#losAngeles .cityName', 1, {text: {value: losAngeles.name}, delay: 1});
     TweenMax.fromTo('#losAngeles .temp',1, {text: {value: losAngeles.main.temp + '°C'}, autoAlpha: 0},{text: {value: losAngeles.main.temp + '°C'},autoAlpha:1, delay: 1.5});
   }).then(() => {
-    TweenMax.staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.2);
     if(goForLanding(losAngeles)){
     }
   });
@@ -162,6 +161,7 @@ $(document).ready(function() {
 
 getAPIdata();
 
+    TweenMax.staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.2);
   // display the clock in 6 digits in the #clock element
   function showDigitalClock(h,i,s) {
     h = (h < 10) ? '0' + h : h;
