@@ -1,0 +1,126 @@
+@font-face {
+  font-family: Work Thin;
+  src: url(../fonts/WorkSans-Thin.ttf);
+}
+@font-face {
+  font-family: Work Regular;
+  src: url(../fonts/WorkSans-Regular.ttf);
+}
+
+* {box-sizing: border-box;}
+
+html {
+	background: #000000;
+	background-size: cover;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Work Regular';
+	color: #ffffff;
+}
+
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.5em;
+}
+
+main {
+	perspective: 800px;
+	position: relative;
+	min-height: 100%;
+	min-height: 90vh;
+	min-height: -webkit-fill-available;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px;
+}
+
+header > * {
+	padding: 0;
+	margin: 0;
+}
+
+section {
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 100%;
+	grid-gap: 8px;
+}
+
+article {
+	position: relative;
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 64px 8px;
+    height: -webkit-fill-available;
+}
+
+#capeCanaveral {
+	background:  url('../img/florida.jpg') bottom center no-repeat, #000000;
+	background-size: 100%;
+}
+#bocaChica {
+	background:  url('../img/texas.jpg') bottom center no-repeat, #000000;
+	background-size: 100%;
+}
+#losAngeles {
+	background:  url('../img/california.jpg') bottom center no-repeat, #000000;
+	background-size: 100%;
+}
+
+.windDirection {
+	display: block;
+	transform-origin: 50% 50%;
+	width: auto;
+	height: 64px;
+	position: absolute;
+}
+
+.windSpeed {
+	margin-top: 74px;
+}
+
+.weatherIcon {
+
+}
+
+#digitalClock {
+	margin: 0;
+	padding: 0;
+	font-weight: 100;
+}
+
+#date {
+	margin: 0;
+	padding: 0;
+	font-weight: 100;
+}
+
+@media screen and (min-width: 480px) {
+
+}
+@media screen and (min-width: 640px) {
+
+}
+@media screen and (min-width: 768px) {
+
+}
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1024px) and (max-height: 500px) {
+}
