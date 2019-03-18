@@ -68,15 +68,15 @@ article {
     height: -webkit-fill-available;
 }
 
-#capeCanaveral {
+#locationOne {
 	background:  url('../img/florida.jpg') bottom center no-repeat, #000000;
 	background-size: 100%;
 }
-#bocaChica {
+#locationTwo {
 	background:  url('../img/texas.jpg') bottom center no-repeat, #000000;
 	background-size: 100%;
 }
-#losAngeles {
+#locationThree {
 	background:  url('../img/california.jpg') bottom center no-repeat, #000000;
 	background-size: 100%;
 }

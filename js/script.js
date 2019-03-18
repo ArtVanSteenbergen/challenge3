@@ -9,9 +9,12 @@ $(document).ready(function() {
   
   // all the variables
   var
-  capeCanaveral = [],
-  bocaChica = [],
-  losAngeles = [],
+  locations = ['Cape Canaveral', 'Boca Chica', 'Los Angeles'];
+  // locations = ['Utrecht', 'Amsterdam', 'Rotterdam'];
+
+  locationOne = [],
+  locationTwo = [],
+  locationThree = [],
 
   tl = new TimelineMax(),
 
@@ -24,20 +27,19 @@ $(document).ready(function() {
   m = MONTHSOFYEAR[datetime.getMonth()],
   Y = datetime.getFullYear(),
 
-  requestCapeCanaveral = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=cape%20canaveral&units=metric',
-  // requestCapeCanaveral = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=&units=metric',
-  requestBocaChica = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=boca%20chica&units=metric',
-  requestPortOfLosAngeles = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=los%20angeles&units=metric',
+  requestLocationOne = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q='+encodeURI(locations[0])+'&units=metric',
+  requestLocationTwo = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q='+encodeURI(locations[1])+'&units=metric',
+  requestLocationThree = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q='+encodeURI(locations[2])+'&units=metric',
 
-  capeCanaveralWindmill = TweenMax.to('#capeCanaveral .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
-  bocaChicaWindmill = TweenMax.to('#bocaChica .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
-  losAngelesWindmill = TweenMax.to('#losAngeles .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
+  locationOneWindmill = TweenMax.to('#locationOne .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
+  locationTwoWindmill = TweenMax.to('#locationTwo .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
+  locationThreeWindmill = TweenMax.to('#locationThree .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 
   // rickAndMorty = 'https://rickandmortyapi.com/api/character/',
   
-  capeCanaveralDirectionTween = TweenMax.to('#capeCanaveral .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
-  bocaChicaDirectionTween = TweenMax.to('#bocaChica .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
-  losAngelesDirectionTween = TweenMax.to('#losAngeles .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
+  locationOneDirectionTween = TweenMax.to('#locationOne .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
+  locationTwoDirectionTween = TweenMax.to('#locationTwo .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
+  locationThreeDirectionTween = TweenMax.to('#locationThree .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 
   init = new TimelineMax();
 
@@ -115,54 +117,54 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
   // });
 
   // get current weather
-  fetch(requestCapeCanaveral)
+  fetch(requestLocationOne)
   .then(function(response) {
     return response.json();
   })
   .then(function(response) {
-    capeCanaveral = response;
-    $('#capeCanaveral .weatherIcon').attr({'src': returnIconUrl(capeCanaveral.weather[0].icon), 'alt': capeCanaveral.weather[0].description, 'title': capeCanaveral.weather[0].description});
-    TweenMax.to(capeCanaveralDirectionTween, 1, {progress: capeCanaveral.wind.deg/360});
-    TweenMax.to(capeCanaveralWindmill, (15/capeCanaveral.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
-    TweenMax.to('#capeCanaveral .windSpeed', 1, {text: {value: Math.round(capeCanaveral.wind.speed*3.6)+'km/h'}});
-    TweenMax.to('#capeCanaveral .cityName', 1, {text: {value: capeCanaveral.name}});
-    TweenMax.fromTo('#capeCanaveral .temp',1, {text: {value: capeCanaveral.main.temp + '°C'}, autoAlpha: 0},{text: {value: capeCanaveral.main.temp + '°C'},autoAlpha:1, delay: 0.5});
+    locationOne = response;
+    $('#locationOne .weatherIcon').attr({'src': returnIconUrl(locationOne.weather[0].icon), 'alt': locationOne.weather[0].description, 'title': locationOne.weather[0].description});
+    TweenMax.to(locationOneDirectionTween, 1, {progress: locationOne.wind.deg/360});
+    TweenMax.to(locationOneWindmill, (15/locationOne.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
+    TweenMax.to('#locationOne .windSpeed', 1, {text: {value: Math.round(locationOne.wind.speed*3.6)+'km/h'}});
+    TweenMax.to('#locationOne .cityName', 1, {text: {value: locationOne.name}});
+    TweenMax.fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'},autoAlpha:1, delay: 0.5});
   }).then(function() {
-    if(goForLanding(capeCanaveral)){
+    if(goForLanding(locationOne)){
     }
   });
 
-  fetch(requestBocaChica)
+  fetch(requestLocationTwo)
   .then(function(response) {
     return response.json();
   })
   .then(function(response) {
-    bocaChica = response;
-    $('#bocaChica .weatherIcon').attr({'src': returnIconUrl(bocaChica.weather[0].icon), 'alt': bocaChica.weather[0].description, 'title': bocaChica.weather[0].description});
-    TweenMax.to(bocaChicaDirectionTween, 1, {progress: bocaChica.wind.deg/360, delay: 0.5});
-    TweenMax.to(bocaChicaWindmill, (15/bocaChica.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
-    TweenMax.to('#bocaChica .windSpeed', 1, {text: {value: Math.round(bocaChica.wind.speed*3.6)+'km/h'}, delay: 0.5});
-    TweenMax.to('#bocaChica .cityName', 1, {text: {value: bocaChica.name}, delay: 0.5});
-    TweenMax.fromTo('#bocaChica .temp',1, {text: {value: bocaChica.main.temp + '°C'}, autoAlpha: 0},{text: {value: bocaChica.main.temp + '°C'},autoAlpha:1, delay: 1});
+    locationTwo = response;
+    $('#locationTwo .weatherIcon').attr({'src': returnIconUrl(locationTwo.weather[0].icon), 'alt': locationTwo.weather[0].description, 'title': locationTwo.weather[0].description});
+    TweenMax.to(locationTwoDirectionTween, 1, {progress: locationTwo.wind.deg/360, delay: 0.5});
+    TweenMax.to(locationTwoWindmill, (15/locationTwo.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
+    TweenMax.to('#locationTwo .windSpeed', 1, {text: {value: Math.round(locationTwo.wind.speed*3.6)+'km/h'}, delay: 0.5});
+    TweenMax.to('#locationTwo .cityName', 1, {text: {value: locationTwo.name}, delay: 0.5});
+    TweenMax.fromTo('#locationTwo .temp',1, {text: {value: locationTwo.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationTwo.main.temp + '°C'},autoAlpha:1, delay: 1});
   }).then(function() {
-    if(goForLanding(bocaChica)){
+    if(goForLanding(locationTwo)){
     }
   });
 
-  fetch(requestPortOfLosAngeles)
+  fetch(requestLocationThree)
   .then(function(response) {
     return response.json();
   })
   .then(function(response) {
-    losAngeles = response;
-    $('#losAngeles .weatherIcon').attr({'src': returnIconUrl(losAngeles.weather[0].icon), 'alt': losAngeles.weather[0].description, 'title': losAngeles.weather[0].description});
-    TweenMax.to(losAngelesDirectionTween, 1, {progress: losAngeles.wind.deg/360, delay: 1});
-    TweenMax.to(losAngelesWindmill, (15/losAngeles.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
-    TweenMax.to('#losAngeles .windSpeed', 1, {text: {value: Math.round(losAngeles.wind.speed*3.6)+'km/h'}, delay: 1});
-    TweenMax.to('#losAngeles .cityName', 1, {text: {value: losAngeles.name}, delay: 1});
-    TweenMax.fromTo('#losAngeles .temp',1, {text: {value: losAngeles.main.temp + '°C'}, autoAlpha: 0},{text: {value: losAngeles.main.temp + '°C'},autoAlpha:1, delay: 1.5});
+    locationThree = response;
+    $('#locationThree .weatherIcon').attr({'src': returnIconUrl(locationThree.weather[0].icon), 'alt': locationThree.weather[0].description, 'title': locationThree.weather[0].description});
+    TweenMax.to(locationThreeDirectionTween, 1, {progress: locationThree.wind.deg/360, delay: 1});
+    TweenMax.to(locationThreeWindmill, (15/locationThree.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
+    TweenMax.to('#locationThree .windSpeed', 1, {text: {value: Math.round(locationThree.wind.speed*3.6)+'km/h'}, delay: 1});
+    TweenMax.to('#locationThree .cityName', 1, {text: {value: locationThree.name}, delay: 1});
+    TweenMax.fromTo('#locationThree .temp',1, {text: {value: locationThree.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationThree.main.temp + '°C'},autoAlpha:1, delay: 1.5});
   }).then(() => {
-    if(goForLanding(losAngeles)){
+    if(goForLanding(locationThree)){
     }
   });
 }
@@ -205,4 +207,5 @@ getAPIdata();
   setInterval(function() {
     showTime();
   }, 1000);
+
 });
