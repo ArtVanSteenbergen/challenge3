@@ -90,7 +90,11 @@ article {
 }
 
 .windSpeed {
+}
+
+.windmill {
 	margin-top: 74px;
+	width: 64px;
 }
 
 .weatherIcon {
