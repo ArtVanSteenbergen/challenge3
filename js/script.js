@@ -9,8 +9,7 @@ $(document).ready(function() {
   
   // all the variables
   var
-  locations = ['Cape Canaveral', 'Boca Chica', 'Los Angeles'];
-  // locations = ['Utrecht', 'Amsterdam', 'Rotterdam'];
+  locations = ['Cape Canaveral', 'Brownsville', 'Los Angeles'];
 
   locationOne = [],
   locationTwo = [],
@@ -41,6 +40,8 @@ $(document).ready(function() {
   locationTwoDirectionTween = TweenMax.to('#locationTwo .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
   locationThreeDirectionTween = TweenMax.to('#locationThree .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 
+  baseWeatherUrl = 'img/weather-icons/';
+  
   init = new TimelineMax();
 
   function showDate(date) {
@@ -64,39 +65,43 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
   function returnIconUrl(weatherType) {
     switch(weatherType) {
       case '01d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/c.png';
+        return baseWeatherUrl + 'day_clear.png';
       case '01n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/c.png';
+        return baseWeatherUrl + 'night_full_moon_clear.png';
       case '02d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/lc.png';
+        return baseWeatherUrl + 'day_partial_cloud.png';
       case '02n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/lc.png';
+        return baseWeatherUrl + 'night_full_moon_partial_cloud.png';
       case '03d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/hc.png';
+        return baseWeatherUrl + 'cloudy.png';
       case '03n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/hc.png';
+        return baseWeatherUrl + 'cloudy.png';
       case '04d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/hc.png';
+        return baseWeatherUrl + 'angry_clouds.png';
       case '04n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/hc.png';
+        return baseWeatherUrl + 'angry_clouds.png';
       case '09d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/s.png';
+        return baseWeatherUrl + 'rain.png';
       case '09n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/s.png';
+        return baseWeatherUrl + 'rain.png';
       case '10d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/lr.png';
+        return baseWeatherUrl + 'day_rain.png';
       case '10n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/lr.png';
+        return baseWeatherUrl + 'night_full_moon_rain.png';
       case '11d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/t.png';
+        return baseWeatherUrl + 'day_thunder.png';
       case '11n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/t.png';
+        return baseWeatherUrl + 'night_full_moon_thunder.png';
       case '13d':
-        return 'https://www.metaweather.com/static/img/weather/png/64/sn.png';
+        return baseWeatherUrl + 'day_snow.png';
       case '13n':
-        return 'https://www.metaweather.com/static/img/weather/png/64/sn.png';
+        return baseWeatherUrl + 'night_full_moon_snow.png';
+      case '50d':
+        return baseWeatherUrl + 'fog.png';
+      case '50n':
+        return baseWeatherUrl + 'fog.png';
       default:
-        return 'https://www.metaweather.com/static/img/weather/png/64/c.png';
+        return baseWeatherUrl + 'day_clear.png';
     }
   }
 
@@ -131,6 +136,8 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     TweenMax.fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'},autoAlpha:1, delay: 0.5});
   }).then(function() {
     if(goForLanding(locationOne)){
+    } else {
+      TweenMax.set('#locationOne',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
   });
 
@@ -148,6 +155,8 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     TweenMax.fromTo('#locationTwo .temp',1, {text: {value: locationTwo.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationTwo.main.temp + '°C'},autoAlpha:1, delay: 1});
   }).then(function() {
     if(goForLanding(locationTwo)){
+    } else {
+      TweenMax.set('#locationTwo',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
   });
 
@@ -165,6 +174,8 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     TweenMax.fromTo('#locationThree .temp',1, {text: {value: locationThree.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationThree.main.temp + '°C'},autoAlpha:1, delay: 1.5});
   }).then(() => {
     if(goForLanding(locationThree)){
+    } else {
+      TweenMax.set('#locationThree',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
   });
 }
