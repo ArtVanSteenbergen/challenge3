@@ -127,29 +127,43 @@ footer {
 
 footer .text,
 #restartBtn {
-	background: black;
+	background: rgba(0,79,132,0.6);
 	padding: 0.25em;
 	border-radius: 3px;
 	border: 1px solid #fff;
 	color: #fff;
 	visibility: hidden;
+	margin: 0;
 }
 
 #rick,
 #morty {
 	position: relative;
 	visibility: hidden;
+	padding: 0.25em 0.25em;
+	background: rgba(0,79,132,0.8);
+	max-width: 100%;
 }
 
-#rick .text {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+#rick img.avatar,
+#morty img.avatar {
+	max-width: 100%;
 }
+
+#rick {
+	border-top: 1px solid #004F84;
+	border-right: 1px solid #004F84;
+}
+
+#morty {
+	border-top: 1px solid #004F84;
+	border-left: 1px solid #004F84;
+}
+
+#rick .text,
 #morty .text {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+	width: 100%;
+	display: block;
 }
 
 #restartBtn {
