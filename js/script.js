@@ -17,8 +17,8 @@ locationThree = [],
 tl = new TimelineMax(),
 locationOneTL = new TimelineMax();
 locationTwoTL = new TimelineMax();
-locationThreeTL = new TimelineMax();
 locationTwoTL.add('locationTwo', '+=1');
+locationThreeTL = new TimelineMax();
 locationThreeTL.add('locationThree', '+=1.5');
 
 datetime = new Date(),
