@@ -30,9 +30,9 @@ d = datetime.getDate(),
 m = MONTHSOFYEAR[datetime.getMonth()],
 Y = datetime.getFullYear(),
 
-requestLocationOne = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q='+encodeURI(locations[0])+'&units=metric',
-requestLocationTwo = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q='+encodeURI(locations[1])+'&units=metric',
-requestLocationThree = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q='+encodeURI(locations[2])+'&units=metric',
+requestLocationOne = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(locations[0]) + '&units=metric',
+requestLocationTwo = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(locations[1]) + '&units=metric',
+requestLocationThree = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(locations[2]) + '&units=metric',
 
 locationOneWindmill = TweenMax.to('#locationOne .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 locationTwoWindmill = TweenMax.to('#locationTwo .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
@@ -47,8 +47,6 @@ locationThreeDirectionTween = TweenMax.to('#locationThree .windDirection', 1, {r
 
 baseWeatherUrl = 'img/weather-icons/';
 
-
-TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
 
 function showDate(date) {
   if (DATEONSCREEN.html() != '') {
@@ -130,32 +128,44 @@ function bestLocation() {
 
 function showLocationOne(response) {
   locationOne = response;
+
   $('#locationOne .weatherIcon').attr({'src': returnIconUrl(locationOne.weather[0].icon), 'alt': locationOne.weather[0].description, 'title': locationOne.weather[0].description});
+  
   locationOneTL.to(locationOneDirectionTween, 1, {progress: locationOne.wind.deg / 360}, 'locationOne')
   .to(locationOneWindmill, (15 / locationOne.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}, 'locationOne')
   .to('#locationOne .windSpeed', 1, {text: {value: Math.round(locationOne.wind.speed * 3.6)+'km/h'}}, 'locationOne')
   .to('#locationOne .cityName', 1, {text: {value: locationOne.name}}, 'locationOne')
-  .fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'}, autoAlpha:1}, 'locationOne+=0.5');
+  .fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'}, autoAlpha:1}, 'locationOne+=0.5')
+  .from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
+  
   if(!goForLanding(locationOne)){
     TweenMax.set('#locationOne',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
+  } else {
+    TweenMax.set('#locationOne',{color: 'rgba(255,255,255,1)',filter: 'grayscale(0%)'});
   }
 }
 
 function showLocationTwo(response) {
- locationTwo = response;
+  locationTwo = response;
+
   $('#locationTwo .weatherIcon').attr({'src': returnIconUrl(locationTwo.weather[0].icon), 'alt': locationTwo.weather[0].description, 'title': locationTwo.weather[0].description}, 'locationTwo')
+  
   locationTwoTL.to(locationTwoDirectionTween, 1, {progress: locationTwo.wind.deg / 360}, 'locationTwo')
   .to(locationTwoWindmill, (15 / locationTwo.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}, 'locationTwo')
   .to('#locationTwo .windSpeed', 1, {text: {value: Math.round(locationTwo.wind.speed * 3.6) + 'km/h'}}, 'locationTwo')
   .to('#locationTwo .cityName', 1, {text: {value: locationTwo.name}}, 'locationTwo')
   .fromTo('#locationTwo .temp',1, {text: {value: locationTwo.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationTwo.main.temp + '°C'}, autoAlpha:1}, 'locationTwo+=0.5');
+  
   if(!goForLanding(locationTwo)){
     TweenMax.set('#locationTwo',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
+  } else {
+    TweenMax.set('#locationTwo',{color: 'rgba(255,255,255,1)',filter: 'grayscale(0%)'});
   }
 }
 
 function showLocationThree(response) {
   locationThree = response;
+
   $('#locationThree .weatherIcon').attr({'src': returnIconUrl(locationThree.weather[0].icon), 'alt': locationThree.weather[0].description, 'title': locationThree.weather[0].description}, 'locationThree')
   locationThreeTL.to(locationThreeDirectionTween, 1, {progress: locationThree.wind.deg / 360}, 'locationThree')
   .to(locationThreeWindmill, (15 / locationThree.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}, 'locationThree') 
@@ -163,49 +173,14 @@ function showLocationThree(response) {
   .to('#locationThree .cityName', 1, {text: {value: locationThree.name}}, 'locationThree')
   .fromTo('#locationThree .temp',1, {text: {value: locationThree.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationThree.main.temp + '°C'}, autoAlpha:1}, 'locationThree+=0.5')
   .staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.5, 'locationOne-=3');
+  
   if(!goForLanding(locationThree)){
     TweenMax.set('#locationThree',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
+  } else {
+    TweenMax.set('#locationThree',{color: 'rgba(255,255,255,1)',filter: 'grayscale(0%)'});
   }
 }
 
-function getAPIdata() {
-  fetch(requestLocationOne)
-  .then((response) => {
-    return response.json();
-  })
-  .then((response) => {
-    showLocationOne(response);
-  }).then(function() {
-    return fetch(requestLocationTwo);
-  }).then((response) => {
-    return response.json();
-  })
-  .then((response) => {
-    showLocationTwo(response);
-  }).then(function() {
-    return fetch(requestLocationThree)
-  })
-  .then((response) => {
-    return response.json();
-  })
-  .then((response) => {
-   showLocationThree(response);
-   }).then(() => {
-    return fetch(requestRick)
-  }).then((response) => {
-    return response.json();
-  })
-  .then((response) => {
-    $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
-    return fetch(requestMorty)
-  }).then((response) => {
-    return response.json();
-  })
-  .then((response) => {
-    $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
-    showRickAndMorty(response);
-  });
-}
 
 function showRickAndMorty(response) {
 
@@ -242,6 +217,7 @@ function showDigitalClock(h,i,s) {
   i = (i < 10) ? '0' + i : i;
   s = (s < 10) ? '0' + s : s;
   his = h + ':' + i + ':' + s;
+  
   TweenMax.set(TIMEONSCREEN,{text:{value: his}});
 }
 
@@ -262,12 +238,80 @@ function showTime() {
   showDigitalClock(h,i,s);
 }
 
+function getAPIdata() {
+  fetch(requestLocationOne)
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    showLocationOne(response);
+  }).then(function() {
+    return fetch(requestLocationTwo);
+  }).then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    showLocationTwo(response);
+  }).then(function() {
+    return fetch(requestLocationThree)
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    showLocationThree(response);
+  }).then(() => {
+    return fetch(requestRick)
+  }).then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
+    return fetch(requestMorty)
+  }).then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
+    showRickAndMorty(response);
+  });
+}
+
+function updateAPIdata() {
+  fetch(requestLocationOne)
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    showLocationOne(response);
+  }).then(function() {
+    return fetch(requestLocationTwo);
+  }).then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    showLocationTwo(response);
+  }).then(function() {
+    return fetch(requestLocationThree)
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    showLocationThree(response);
+  })
+}
+
 getAPIdata();
+
 showTime();
 
-// set time every second
 setInterval(function() {
   showTime();
 }, 1000);
+
+setInterval(function() {
+  updateAPIdata();
+}, 60000);
 
 $('#restartBtn').click(()=>tl.restart());
