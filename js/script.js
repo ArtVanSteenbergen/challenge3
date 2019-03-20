@@ -34,7 +34,7 @@ $(document).ready(function() {
   locationTwoWindmill = TweenMax.to('#locationTwo .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
   locationThreeWindmill = TweenMax.to('#locationThree .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 
-  // rickAndMorty = 'https://rickandmortyapi.com/api/character/',
+  rickAndMorty = 'https://rickandmortyapi.com/api/character/',
   
   locationOneDirectionTween = TweenMax.to('#locationOne .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
   locationTwoDirectionTween = TweenMax.to('#locationTwo .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
@@ -109,19 +109,21 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     if (location.wind.speed<5 && location.main.temp > 5) return true;
   }
 
+  function bestLocation() {
+    if (locationOne.wind.speed < locationTwo.wind.speed && locationOne.wind.speed < locationTwo.wind.speed) {
+      return locationOne;
+    }
+    if (locationTwo.wind.speed < locationOne.wind.speed && locationTwo.wind.speed < locationTwo.wind.speed) {
+      return locationTwo;
+    }
+    if (locationThree.wind.speed < locationOne.wind.speed && locationThree.wind.speed < locationTwo.wind.speed) {
+      return locationThree;
+    }
+  }
+
+
   function getAPIdata() {
-  // construct request
 
-
-  // fetch(rickAndMorty+Math.floor(Math.random() * 20) + 1)
-  // .then(function(response) {
-  //   return response.json();
-  // })
-  // .then(function(response) {
-  //   $('main').append('<img src="'+ response.image + '" alt="'+response.name+'"/>');
-  // });
-
-  // get current weather
   fetch(requestLocationOne)
   .then(function(response) {
     return response.json();
@@ -178,6 +180,44 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       TweenMax.set('#locationThree',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
   });
+
+  fetch(rickAndMorty + 1)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(response) {
+    console.log(response)
+    $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
+  });
+
+  fetch(rickAndMorty + 2)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(response) {
+
+
+
+    console.log(response);
+    $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
+    tl.from('footer #rick .avatar',1,{y:'100%', autoAlpha:0}, '+=1')
+    .fromTo('footer #rick .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha:1})
+    .from('footer #morty .avatar',1,{y:'100%', autoAlpha:0}, '-=0.5')
+    .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
+    .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha:1}, '-=3')
+    .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
+    .to('footer #rick .text',3,{text: {value: 'Look like we are landing in ' + bestLocation().name + ' Morty.'}, autoAlpha: 1}, '-=3')
+    .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
+    .to('footer #morty .text',2,{text: {value: 'Okay, but.. but.. but why Rick?'}, autoAlpha: 1}, '-=3')
+    .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
+    .to('footer #rick .text',3,{text: {value: 'Because it has the lowest wind morty and it has ' + bestLocation().weather[0].description + '.'}, autoAlpha: 1}, '-=3')
+    .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
+    .to('footer #morty .text',2,{text: {value: 'Let\'s go to ' + bestLocation().name + ' then.'}, autoAlpha: 1}, '-=3')
+    .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
+    .to('footer #rick', 1, {y:'100%', autoAlpha: 0})
+    .to('footer #morty', 1, {y:'100%', autoAlpha: 0})
+    .from('#restartBtn',1,{y:'100%', autoAlpha:0}, '-=1')
+  });
 }
 
 getAPIdata();
@@ -218,5 +258,7 @@ getAPIdata();
   setInterval(function() {
     showTime();
   }, 1000);
+
+  $('#restartBtn').click(()=>tl.restart());
 
 });
