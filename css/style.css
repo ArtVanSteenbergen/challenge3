@@ -151,21 +151,25 @@ footer .text {
 	padding: 0.25em 0.25em;
 	background: rgba(0,79,132,0.8);
 	width: 100%;
+	transition: height 1s ease-in-out;
 }
 
 #rick img.avatar,
 #morty img.avatar {
 	max-width: 100%;
+	border-radius: 3px;
 }
 
 #rick {
 	border-top: 1px solid #004F84;
 	border-right: 1px solid #004F84;
+	border-top-right-radius: 6px;
 }
 
 #morty {
 	border-top: 1px solid #004F84;
 	border-left: 1px solid #004F84;
+	border-top-left-radius: 6px;
 }
 
 #rick .text,
@@ -185,6 +189,10 @@ footer .text {
 @media screen and (min-width: 640px) {
 	h1 {
 		font-size: 1.2em;
+	}
+	#rick,
+	#morty {
+		width: 300px;
 	}
 	#rick .text,
 	#morty .text {

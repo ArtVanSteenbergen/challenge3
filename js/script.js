@@ -135,7 +135,7 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       TweenMax.to(locationOneWindmill, (15 / locationOne.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
       TweenMax.to('#locationOne .windSpeed', 1, {text: {value: Math.round(locationOne.wind.speed * 3.6)+'km/h'}});
       TweenMax.to('#locationOne .cityName', 1, {text: {value: locationOne.name}});
-      TweenMax.fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'},autoAlpha:1, delay: 0.5});
+      TweenMax.fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'}, autoAlpha:1, delay: 0.5});
     }).then(function() {
       if(goForLanding(locationOne)){
       } else {
@@ -152,7 +152,7 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       TweenMax.to(locationTwoWindmill, (15 / locationTwo.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
       TweenMax.to('#locationTwo .windSpeed', 1, {text: {value: Math.round(locationTwo.wind.speed * 3.6) + 'km/h'}, delay: 0.5});
       TweenMax.to('#locationTwo .cityName', 1, {text: {value: locationTwo.name}, delay: 0.5});
-      TweenMax.fromTo('#locationTwo .temp',1, {text: {value: locationTwo.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationTwo.main.temp + '°C'},autoAlpha:1, delay: 1});
+      TweenMax.fromTo('#locationTwo .temp',1, {text: {value: locationTwo.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationTwo.main.temp + '°C'}, autoAlpha:1, delay: 1});
     }).then(function() {
       if(goForLanding(locationTwo)){
       } else {
@@ -170,7 +170,7 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       TweenMax.to(locationThreeWindmill, (15 / locationThree.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}); 
       TweenMax.to('#locationThree .windSpeed', 1, {text: {value: Math.round(locationThree.wind.speed * 3.6) + 'km/h'}, delay: 1});
       TweenMax.to('#locationThree .cityName', 1, {text: {value: locationThree.name}, delay: 1});
-      TweenMax.fromTo('#locationThree .temp',1, {text: {value: locationThree.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationThree.main.temp + '°C'},autoAlpha:1, delay: 1.5});
+      TweenMax.fromTo('#locationThree .temp',1, {text: {value: locationThree.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationThree.main.temp + '°C'}, autoAlpha:1, delay: 1.5});
     }).then(() => {
       if(goForLanding(locationThree)){
       } else {
@@ -182,30 +182,40 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       return response.json();
     })
     .then((response) => {
-      $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
+      $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
       return fetch(rickAndMorty + 2)
     }).then((response) => {
       return response.json();
     })
     .then((response) => {
-      $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
-      tl.from('footer #rick',1,{x:'-100%', autoAlpha:0, ease: Power4.easeOut}, '+=1')
-      .fromTo('footer #rick .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha:0.75})
-      .from('footer #morty',1,{x:'100%', autoAlpha:0, ease: Power4.easeOut}, '-=0.5')
-      .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
-      .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha:0.75}, '-=3')
-      .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
-      .to('footer #rick .text',3,{text: {value: 'It looks like we are landing in ' + bestLocation().name + ' Morty.'}, autoAlpha:0.75}, '-=3')
-      .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
-      .to('footer #morty .text',2,{text: {value: 'Okay, but.. but.. but why Rick?'}, autoAlpha:0.75}, '-=3')
-      .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
-      .to('footer #rick .text',3,{text: {value: 'Because it has the lowest wind speed Morty and it has ' + bestLocation().weather[0].description + '.'}, autoAlpha:0.75}, '-=3')
-      .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
-      .to('footer #morty .text',2,{text: {value: 'Let\'s go to '+ bestLocation().name + ' then.'}, autoAlpha:0.75}, '-=3')
-      .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
-      .to('footer #rick', 1, {x:'-100%', autoAlpha: 0})
-      .to('footer #morty', 1, {x:'100%', autoAlpha: 0})
-      .from('#restartBtn',2,{y:'-700%', autoAlpha:0, ease: Bounce.easeOut}, '-=1')
+      $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
+
+      tl.from('footer #rick',1,{x: '-100%', autoAlpha: 0, ease: Power4.easeOut})
+      .fromTo('footer #rick .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha: 0.75})
+
+      .from('footer #morty',1,{x:'100%', autoAlpha: 0, ease: Power4.easeOut})
+      .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+
+      .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha: 0.75}, '-=3')
+      .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+
+      .to('footer #rick .text',3,{text: {value: 'It looks like we\'re going to land in ' + bestLocation().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
+      .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+
+      .to('footer #morty .text',2,{text: {value: 'Okay, but.. but.. but why Rick?', delimiter: '.'}, autoAlpha: 0.75}, '-=1')
+      .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+
+      .to('footer #rick .text',3,{text: {value: 'Because it has the lowest wind speed Morty and it has ' + bestLocation().weather[0].description + '.'}, autoAlpha: 0.75}, '-=1')
+      .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+
+      .to('footer #morty .text',2,{text: {value: 'Let\'s go to '+ bestLocation().name + ' then.'}, autoAlpha: 0.75}, '-=1')
+      .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+
+      .to('footer #rick', 1, {x: '-100%', autoAlpha: 0}, '-=1')
+
+      .to('footer #morty', 1, {x:'100%', autoAlpha: 0}, '-=0.5')
+
+      .from('#restartBtn',2,{y:'-700%', autoAlpha: 0, ease: Bounce.easeOut}, '-=1')
     });
   }
 
