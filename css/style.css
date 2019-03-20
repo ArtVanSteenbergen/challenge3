@@ -162,8 +162,6 @@ footer .text,
 
 #rick .text,
 #morty .text {
-	width: 100%;
-	display: block;
 }
 
 #restartBtn {
@@ -179,6 +177,10 @@ footer .text,
 @media screen and (min-width: 640px) {
 	h1 {
 		font-size: 1.2em;
+	}
+	#rick .text,
+	#morty .text {
+		width: 300px;
 	}
 }
 @media screen and (min-width: 768px) {
