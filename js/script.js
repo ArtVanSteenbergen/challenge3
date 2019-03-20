@@ -188,9 +188,9 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     })
     .then((response) => {
       $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
-      tl.from('footer #rick',1,{x:'-100%', autoAlpha:0, ease: Back.easeOut}, '+=1')
+      tl.from('footer #rick',1,{x:'-100%', autoAlpha:0, ease: Power4.easeOut}, '+=1')
       .fromTo('footer #rick .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha:0.75})
-      .from('footer #morty',1,{x:'100%', autoAlpha:0, ease: Back.easeOut}, '-=0.5')
+      .from('footer #morty',1,{x:'100%', autoAlpha:0, ease: Power4.easeOut}, '-=0.5')
       .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
       .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha:0.75}, '-=3')
       .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
