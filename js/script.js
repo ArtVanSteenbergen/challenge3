@@ -312,6 +312,6 @@ setInterval(function() {
 
 setInterval(function() {
   updateAPIdata();
-}, 60000);
+}, 300000);
 
 $('#restartBtn').click(()=>tl.restart());
