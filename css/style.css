@@ -132,11 +132,13 @@ footer .text,
 	border-radius: 3px;
 	border: 1px solid #fff;
 	color: #fff;
+	visibility: hidden;
 }
 
 #rick,
 #morty {
 	position: relative;
+	visibility: hidden;
 }
 
 #rick .text {

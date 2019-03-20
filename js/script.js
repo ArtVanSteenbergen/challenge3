@@ -141,10 +141,8 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     } else {
       TweenMax.set('#locationOne',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
-  });
-
-  fetch(requestLocationTwo)
-  .then(function(response) {
+    return fetch(requestLocationTwo);
+  }).then(function(response) {
     return response.json();
   })
   .then(function(response) {
@@ -160,9 +158,8 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     } else {
       TweenMax.set('#locationTwo',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
-  });
-
-  fetch(requestLocationThree)
+    return fetch(requestLocationThree)
+  })
   .then(function(response) {
     return response.json();
   })
@@ -179,30 +176,22 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
     } else {
       TweenMax.set('#locationThree',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
     }
-  });
-
-  fetch(rickAndMorty + 1)
-  .then(function(response) {
+    return fetch(rickAndMorty + 1)
+  }).then(function(response) {
     return response.json();
   })
   .then(function(response) {
     console.log(response)
     $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
-  });
-
-  fetch(rickAndMorty + 2)
-  .then(function(response) {
+    return fetch(rickAndMorty + 2)
+  }).then(function(response) {
     return response.json();
   })
   .then(function(response) {
-
-
-
-    console.log(response);
     $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name,});
-    tl.from('footer #rick .avatar',1,{y:'100%', autoAlpha:0}, '+=1')
+    tl.from('footer #rick',1,{y:'100%', autoAlpha:0}, '+=1')
     .fromTo('footer #rick .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha:1})
-    .from('footer #morty .avatar',1,{y:'100%', autoAlpha:0}, '-=0.5')
+    .from('footer #morty',1,{y:'100%', autoAlpha:0}, '-=0.5')
     .to('footer #rick .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
     .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha:1}, '-=3')
     .to('footer #morty .text', 1, {text: {value: ''},autoAlpha: 0}, '+=2')
