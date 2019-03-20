@@ -136,7 +136,7 @@ function showLocationOne(response) {
   .to('#locationOne .windSpeed', 1, {text: {value: Math.round(locationOne.wind.speed * 3.6)+'km/h'}}, 'locationOne')
   .to('#locationOne .cityName', 1, {text: {value: locationOne.name}}, 'locationOne')
   .fromTo('#locationOne .temp',1, {text: {value: locationOne.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationOne.main.temp + '°C'}, autoAlpha:1}, 'locationOne+=0.5')
-  .from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
+  .fromTo('header', 3, {y: '-50%', autoAlpha: 0},{y: '0%', autoAlpha: 1, ease: Elastic.easeOut});
   
   if(!goForLanding(locationOne)){
     TweenMax.set('#locationOne',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
