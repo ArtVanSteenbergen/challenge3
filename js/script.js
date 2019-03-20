@@ -194,15 +194,15 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       .fromTo('footer #rick .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha: 0.75})
 
       .from('footer #morty',1,{x:'100%', autoAlpha: 0, ease: Power4.easeOut})
-      .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+      .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=1')
 
       .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha: 0.75}, '-=3')
-      .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
+      .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0})
 
       .to('footer #rick .text',3,{text: {value: 'It looks like we\'re going to land in ' + bestLocation().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
       .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
-      .to('footer #morty .text',2,{text: {value: 'Okay, but.. but.. but why Rick?', delimiter: '.'}, autoAlpha: 0.75}, '-=1')
+      .to('footer #morty .text',2,{text: {value: 'Okay, but.. but.. but why Rick?'}, autoAlpha: 0.75}, '-=1')
       .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
       .to('footer #rick .text',3,{text: {value: 'Because it has the lowest wind speed Morty and it has ' + bestLocation().weather[0].description + '.'}, autoAlpha: 0.75}, '-=1')
