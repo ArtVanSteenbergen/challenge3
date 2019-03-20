@@ -93,9 +93,9 @@ function returnIconUrl(weatherType) {
     case '10n':
       return baseWeatherUrl + 'night_full_moon_rain.png';
     case '11d':
-      return baseWeatherUrl + 'day_thunder.png';
+      return baseWeatherUrl + 'thunder.png';
     case '11n':
-      return baseWeatherUrl + 'night_full_moon_thunder.png';
+      return baseWeatherUrl + 'thunder.png';
     case '13d':
       return baseWeatherUrl + 'day_snow.png';
     case '13n':
