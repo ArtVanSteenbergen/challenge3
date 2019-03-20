@@ -162,7 +162,7 @@ function showLocationThree(response) {
   .to('#locationThree .windSpeed', 1, {text: {value: Math.round(locationThree.wind.speed * 3.6) + 'km/h'}}, 'locationThree')
   .to('#locationThree .cityName', 1, {text: {value: locationThree.name}}, 'locationThree')
   .fromTo('#locationThree .temp',1, {text: {value: locationThree.main.temp + '°C'}, autoAlpha: 0},{text: {value: locationThree.main.temp + '°C'}, autoAlpha:1}, 'locationThree+=0.5')
-  .staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.5);
+  .staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.5, 'locationOne-=3');
   if(!goForLanding(locationThree)){
     TweenMax.set('#locationThree',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
   }
@@ -270,4 +270,4 @@ setInterval(function() {
   showTime();
 }, 1000);
 
-$('#restartBtn').click(()=>{tl.restart();locationOneTL.restart();locationTwoTL.restart();locationThreeTL.restart()});
+$('#restartBtn').click(()=>tl.restart());
