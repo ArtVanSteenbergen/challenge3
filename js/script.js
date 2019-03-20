@@ -176,6 +176,7 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
       } else {
         TweenMax.set('#locationThree',{color: 'rgba(255,255,255,0.3)',filter: 'grayscale(100%)'});
       }
+      TweenMax.staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.2);
       return fetch(rickAndMorty + 1)
     }).then((response) => {
       return response.json();
@@ -210,7 +211,6 @@ TweenMax.from('header', 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
 
   getAPIdata();
 
-    TweenMax.staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.2);
   // display the clock in 6 digits in the #clock element
   function showDigitalClock(h,i,s) {
     h = (h < 10) ? '0' + h : h;
