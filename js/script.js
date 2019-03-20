@@ -193,7 +193,7 @@ function showRickAndMorty(response) {
     .fromTo('footer #morty .text',1,{y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha: 0.75}, '-=3')
     .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0})
 
-    .to('footer #rick .text',3,{text: {value: 'It looks like we\'re going to land in ' + bestLocation().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
+    .to('footer #rick .text',3,{text: {value: 'It looks like we\'re going to land in, *burb*, ' + bestLocation().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
     .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
     .to('footer #morty .text',2,{text: {value: 'Okay, but.. but.. but why Rick?'}, autoAlpha: 0.75}, '-=1')
