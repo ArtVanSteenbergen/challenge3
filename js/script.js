@@ -8,21 +8,21 @@ MONTHSOFYEAR = ['January','February','March','April','May','June','July','August
 
 // all the variables
 var
-locations = ['Cape Canaveral', 'Brownsville', 'Los Angeles'];
-// locations = ['The Hague', 'Limburg', 'Groningen'];
-// locations = ['London', 'New Jersey', 'Washington'];
-// locations = ['Alaska','Hawai', 'Ohio'];
+locations = ['Cape Canaveral', 'Brownsville', 'Los Angeles'],
+// locations = ['The Hague', 'Limburg', 'Groningen'],
+// locations = ['London', 'New Jersey', 'Washington'],
+// locations = ['Alaska','Hawai', 'Ohio'],
 
 locationOne = [],
 locationTwo = [],
 locationThree = [],
 
 tl = new TimelineMax(),
-locationOneTL = new TimelineMax();
-locationTwoTL = new TimelineMax();
-locationTwoTL.add('locationTwo', '+=1');
-locationThreeTL = new TimelineMax();
-locationThreeTL.add('locationThree', '+=1.5');
+locationOneTL = new TimelineMax(),
+locationTwoTL = new TimelineMax(),
+locationTwoTL.add('locationTwo', '+=1'),
+locationThreeTL = new TimelineMax(),
+locationThreeTL.add('locationThree', '+=1.5'),
 
 datetime = new Date(),
 h = datetime.getHours(),
