@@ -79,7 +79,7 @@ function updateAPIdata() {
   })
   .then((response) => {
     locations[0] = response;
-    showLocation(locations[0], '#locationOne', 'locationOne', 1);
+    showLocation(locations[0], '#locationOne', 'locationOne', 2);
   }).then(function() {
     return fetch(requestLocationTwo);
   }).then((response) => {
@@ -96,6 +96,6 @@ function updateAPIdata() {
   })
   .then((response) => {
     locations[2] = response;
-    showLocation(locations[2], '#locationThree', 'locationThree', 3);
+    showLocation(locations[2], '#locationThree', 'locationThree', 2);
   });
 }
