@@ -65,7 +65,7 @@ function bestLocation() {
 }
 
 function goForLanding(location) {
-  if (location.wind.speed<5 && location.main.temp > 5) return true;
+  if (location.wind.speed < (25/3.6) && location.main.temp > (25/3.6)) return true;
 }
 
 function vibrate(duration) {

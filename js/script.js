@@ -10,7 +10,7 @@ function showLocation(response, id, string, number) {
     TweenMax.fromTo('header', 3, {y: '-50%', autoAlpha: 0},{y: '0%', autoAlpha: 1, ease: Elastic.easeOut});
   }
   if (number == 3) {
-    TweenMax.staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.5, 'locationOne-=3');
+    TweenMax.staggerFrom('article', 2, {y: '-50px', autoAlpha: 0, ease:Back.easeOut}, 0.5);
   }
 
   if(!goForLanding(response)){
