@@ -78,6 +78,7 @@ function updateAPIdata() {
     return response.json();
   })
   .then((response) => {
+    locationOne = response;
     showLocation(locationOne, '#locationOne', 'locationOne', 1);
   }).then(function() {
     return fetch(requestLocationTwo);
@@ -85,14 +86,16 @@ function updateAPIdata() {
     return response.json();
   })
   .then((response) => {
+    locationTwo = response;
     showLocation(locationTwo, '#locationTwo', 'locationTwo', 2);
   }).then(function() {
-    return fetch(requestLocationThree)
+    return fetch(requestLocationThree);
   })
   .then((response) => {
     return response.json();
   })
   .then((response) => {
+    locationThree = response;
     showLocation(locationThree, '#locationThree', 'locationThree', 3);
   });
 }
