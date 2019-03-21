@@ -138,7 +138,7 @@ setInterval(function() {
 
 setInterval(function() {
   updateAPIdata();
-}, 300000);
+}, 600000);
 
 
 $('#restartBtn').click(()=>{tl.restart();vibrate(2000);});
