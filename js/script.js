@@ -317,5 +317,4 @@ setInterval(function() {
   updateAPIdata();
 }, 300000);
 
-$('#restartBtn').click(()=>tl.restart());
-window.navigator.vibrate(200);
+$('#restartBtn').click(()=>{tl.restart();window.navigator.vibrate(200);});
