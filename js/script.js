@@ -321,4 +321,4 @@ function vibrate(duration) {
   window.navigator.vibrate(duration);
 }
 
-$('#restartBtn').click(()=>{tl.restart();vibrate(200);});
+$('#restartBtn').click(()=>{tl.restart();vibrate(2000);});
