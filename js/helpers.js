@@ -53,14 +53,14 @@ function returnIconUrl(weatherType) {
 }
 
 function bestLocation() {
-  if (locationOne.wind.speed <= locationTwo.wind.speed && locationOne.wind.speed <= locationThree.wind.speed) {
-    return locationOne;
+  if (locations[0].wind.speed <= locations[1].wind.speed && locations[0].wind.speed <= locations[2].wind.speed) {
+    return locations[0];
   }
-  if (locationTwo.wind.speed <= locationOne.wind.speed && locationTwo.wind.speed <= locationThree.wind.speed) {
-    return locationTwo;
+  if (locations[1].wind.speed <= locations[0].wind.speed && locations[1].wind.speed <= locations[2].wind.speed) {
+    return locations[1];
   }
-  if (locationThree.wind.speed <= locationOne.wind.speed && locationThree.wind.speed <= locationTwo.wind.speed) {
-    return locationThree;
+  if (locations[2].wind.speed <= locations[0].wind.speed && locations[2].wind.speed <= locations[1].wind.speed) {
+    return locations[2];
   }
 }
 
@@ -78,16 +78,16 @@ function updateAPIdata() {
     return response.json();
   })
   .then((response) => {
-    locationOne = response;
-    showLocation(locationOne, '#locationOne', 'locationOne', 1);
+    locations[0] = response;
+    showLocation(locations[0], '#locationOne', 'locationOne', 1);
   }).then(function() {
     return fetch(requestLocationTwo);
   }).then((response) => {
     return response.json();
   })
   .then((response) => {
-    locationTwo = response;
-    showLocation(locationTwo, '#locationTwo', 'locationTwo', 2);
+    locations[1] = response;
+    showLocation(locations[1], '#locationTwo', 'locationTwo', 2);
   }).then(function() {
     return fetch(requestLocationThree);
   })
@@ -95,7 +95,7 @@ function updateAPIdata() {
     return response.json();
   })
   .then((response) => {
-    locationThree = response;
-    showLocation(locationThree, '#locationThree', 'locationThree', 3);
+    locations[2] = response;
+    showLocation(locations[2], '#locationThree', 'locationThree', 3);
   });
 }

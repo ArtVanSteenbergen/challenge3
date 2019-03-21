@@ -8,14 +8,12 @@ MONTHSOFYEAR = ['January','February','March','April','May','June','July','August
 
 // all the variables
 var
-locations = ['Cape Canaveral', 'Brownsville', 'Los Angeles'],
-// locations = ['The Hague', 'Limburg', 'Groningen'],
-// locations = ['London', 'New Jersey', 'Washington'],
-// locations = ['Alaska','Hawai', 'Ohio'],
+citys = ['Cape Canaveral', 'Brownsville', 'Los Angeles'],
+// citys = ['The Hague', 'Limburg', 'Groningen'],
+// citys = ['London', 'New Jersey', 'Washington'],
+// citys = ['Alaska','Hawai', 'Ohio'],
 
-locationOne = [],
-locationTwo = [],
-locationThree = [],
+locations = new Array,
 
 tl = new TimelineMax(),
 locationOneTL = new TimelineMax(),
@@ -31,9 +29,9 @@ d = datetime.getDate(),
 m = MONTHSOFYEAR[datetime.getMonth()],
 Y = datetime.getFullYear(),
 
-requestLocationOne = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(locations[0]) + '&units=metric',
-requestLocationTwo = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(locations[1]) + '&units=metric',
-requestLocationThree = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(locations[2]) + '&units=metric',
+requestLocationOne = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(citys[0]) + '&units=metric',
+requestLocationTwo = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(citys[1]) + '&units=metric',
+requestLocationThree = 'https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=' + encodeURI(citys[2]) + '&units=metric',
 
 locationOneWindmill = TweenMax.to('#locationOne .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 locationTwoWindmill = TweenMax.to('#locationTwo .windmill', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
