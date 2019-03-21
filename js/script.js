@@ -9,6 +9,9 @@ MONTHSOFYEAR = ['January','February','March','April','May','June','July','August
 // all the variables
 var
 locations = ['Cape Canaveral', 'Brownsville', 'Los Angeles'];
+// locations = ['The Hague', 'Limburg', 'Groningen'];
+// locations = ['London', 'New Jersey', 'Washington'];
+// locations = ['Alaska','Hawai', 'Ohio'];
 
 locationOne = [],
 locationTwo = [],
@@ -266,13 +269,13 @@ function getAPIdata() {
     return response.json();
   })
   .then((response) => {
-    $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
+    $('footer #rick .avatar').attr({'src':response.image, 'alt':response.name,'title':response.name});
     return fetch(requestMorty)
   }).then((response) => {
     return response.json();
   })
   .then((response) => {
-    $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'description':response.name});
+    $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'title':response.name});
     showRickAndMorty(response);
   });
 }
@@ -299,7 +302,7 @@ function updateAPIdata() {
   })
   .then((response) => {
     showLocationThree(response);
-  })
+  });
 }
 
 getAPIdata();
@@ -315,3 +318,4 @@ setInterval(function() {
 }, 300000);
 
 $('#restartBtn').click(()=>tl.restart());
+window.navigator.vibrate(200);
