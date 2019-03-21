@@ -112,6 +112,10 @@ function returnIconUrl(weatherType) {
   }
 }
 
+function vibrate(duration) {
+  window.navigator.vibrate(duration);
+}
+
 function goForLanding(location) {
   if (location.wind.speed<5 && location.main.temp > 5) return true;
 }
@@ -317,8 +321,5 @@ setInterval(function() {
   updateAPIdata();
 }, 300000);
 
-function vibrate(duration) {
-  window.navigator.vibrate(duration);
-}
 
 $('#restartBtn').click(()=>{tl.restart();vibrate(2000);});
