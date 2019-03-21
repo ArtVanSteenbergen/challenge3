@@ -20,9 +20,7 @@ locationThree = [],
 tl = new TimelineMax(),
 locationOneTL = new TimelineMax(),
 locationTwoTL = new TimelineMax(),
-locationTwoTL.add('locationTwo', '+=1'),
 locationThreeTL = new TimelineMax(),
-locationThreeTL.add('locationThree', '+=1.5'),
 
 datetime = new Date(),
 h = datetime.getHours(),
@@ -49,6 +47,8 @@ locationTwoDirectionTween = TweenMax.to('#locationTwo .windDirection', 1, {rotat
 locationThreeDirectionTween = TweenMax.to('#locationThree .windDirection', 1, {rotation: '360', ease: Linear.easeNone, repeat: -1, paused: true}),
 
 baseWeatherUrl = 'img/weather-icons/';
+locationTwoTL.add('locationTwo', '+=1');
+locationThreeTL.add('locationThree', '+=1.5');
 
 
 function showDate(date) {
