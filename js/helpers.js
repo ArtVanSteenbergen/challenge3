@@ -1,3 +1,7 @@
+/**
+	@param d is the day of the month
+	@returns d with a propper suffix
+*/
 function nth(d) {
   if (d > 3 && d < 21)
     return d+'th'; 
@@ -9,6 +13,10 @@ function nth(d) {
   }
 }
 
+/**
+	@param weatherType is code for a type of weather form the OpenWeather API
+	@returns the URL of the corresponding image
+*/
 function returnIconUrl(weatherType) {
   switch(weatherType) {
     case '01d':
@@ -52,6 +60,9 @@ function returnIconUrl(weatherType) {
   }
 }
 
+/**
+	@returns the location object with the lowest wind speed
+*/
 function bestLocation() {
   if (locations[0].wind.speed <= locations[1].wind.speed && locations[0].wind.speed <= locations[2].wind.speed) {
     return locations[0];
@@ -64,10 +75,18 @@ function bestLocation() {
   }
 }
 
+/**
+	@param location is a Open Weather API Object
+	@returns true if wind speed op location object is under threshold
+*/
 function goForLanding(location) {
-  if (location.wind.speed < (25/3.6) && location.main.temp > (25/3.6)) return true;
+  if (location.wind.speed < MAXWINDSPEED && location.main.temp > MAXWINDSPEED) return true;
 }
 
+
+/**
+	@param duration is time in miliseconds
+*/
 function vibrate(duration) {
   window.navigator.vibrate(duration);
 }
@@ -98,4 +117,6 @@ function updateAPIdata() {
     locations[2] = response;
     showLocation(locations[2], '#locationThree', 'locationThree', 2);
   });
+  console.clear();
+  console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
