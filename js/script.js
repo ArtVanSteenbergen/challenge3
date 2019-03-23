@@ -143,4 +143,4 @@ setInterval(function() {
 }, 600000);
 
 
-$('#restartBtn').click(()=>{tl.restart();vibrate(2000);});
+$('#restartBtn').click(()=>{tl.restart();vibrate([200,100,50,50,50,50,200,100]);});
