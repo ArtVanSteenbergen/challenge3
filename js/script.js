@@ -101,6 +101,7 @@ function getAPIdata() {
   })
   .then((response) => {
     locations[1] = response;
+    console.table(locations[1]);
     showLocation(locations[1], '#locationTwo', 'locationTwo', 2);
   }).then(function() {
     return fetch(requestLocationThree);
@@ -126,7 +127,6 @@ function getAPIdata() {
     $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'title':response.name});
     showRickAndMorty(response);
   });
-  console.clear();
   console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
 

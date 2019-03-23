@@ -117,6 +117,5 @@ function updateAPIdata() {
     locations[2] = response;
     showLocation(locations[2], '#locationThree', 'locationThree', 2);
   });
-  console.clear();
   console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
