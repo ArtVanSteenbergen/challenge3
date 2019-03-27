@@ -63,7 +63,7 @@ function returnIconUrl(weatherType) {
 /**
 	@returns the location object with the lowest wind speed
 */
-function bestLocation() {
+function lowestWindSpeed() {
   if (locations[0].wind.speed <= locations[1].wind.speed && locations[0].wind.speed <= locations[2].wind.speed) {
     return locations[0];
   }

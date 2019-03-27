@@ -31,7 +31,7 @@ function showRickAndMorty(response) {
     .fromTo('footer #morty .text', 1, {y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha: 0.75}, '-=3')
     .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0})
 
-    .to('footer #rick .text', 3, {text: {value: 'It looks like we\'re going to land in, *burb*, ' + bestLocation().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
+    .to('footer #rick .text', 3, {text: {value: 'It looks like we\'re going to land in, *burb*, ' + lowestWindSpeed().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
     .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
     .to('footer #morty .text', 2, {text: {value: 'Okay, but.. but.. but why Rick?'}, autoAlpha: 0.75}, '-=1')
@@ -43,7 +43,7 @@ function showRickAndMorty(response) {
     .to('footer #rick .text', 3, {text: {value: 'Do you want to crash and die?'}, autoAlpha: 0.75})
     .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
-    .to('footer #morty .text', 2, {text: {value: 'No Rick, let\'s go to '+ bestLocation().name + ' then.'}, autoAlpha: 0.75}, '-=1')
+    .to('footer #morty .text', 2, {text: {value: 'No Rick, let\'s go to '+ lowestWindSpeed().name + ' then.'}, autoAlpha: 0.75}, '-=1')
     .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
     .to('footer #rick', 1, {x: '-100%', autoAlpha: 0}, '-=1')
@@ -101,7 +101,6 @@ function getAPIdata() {
   })
   .then((response) => {
     locations[1] = response;
-    console.table(locations[1]);
     showLocation(locations[1], '#locationTwo', 'locationTwo', 2);
   }).then(function() {
     return fetch(requestLocationThree);
@@ -112,6 +111,7 @@ function getAPIdata() {
   .then((response) => {
     locations[2] = response;
     showLocation(locations[2], '#locationThree', 'locationThree', 3);
+    console.table(locations);
   }).then(() => {
     return fetch(requestRick)
   }).then((response) => {
