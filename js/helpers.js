@@ -80,7 +80,7 @@ function lowestWindSpeed() {
 	@returns true if wind speed op location object is under threshold
 */
 function goForLanding(location) {
-  if (location.wind.speed < MAXWINDSPEED && location.main.temp > MAXWINDSPEED) return true;
+  if (location.wind.speed < MAXWINDSPEED) return true;
 }
 
 
