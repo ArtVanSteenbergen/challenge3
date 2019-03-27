@@ -20,7 +20,7 @@ function showLocation(response, id, string, number) {
   }
 }
 
-function showRickAndMorty(response) {
+function showRickAndMorty() {
 
     tl.from('footer #rick', 1, {x: '-100%', autoAlpha: 0, ease: Power4.easeOut})
     .fromTo('footer #rick .text', 1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha: 0.75})
