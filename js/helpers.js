@@ -19,44 +19,25 @@ function nth(d) {
 */
 function returnIconUrl(weatherType) {
   switch(weatherType) {
-    case '01d':
-      return baseWeatherUrl + 'day_clear.png';
-    case '01n':
-      return baseWeatherUrl + 'night_full_moon_clear.png';
-    case '02d':
-      return baseWeatherUrl + 'day_partial_cloud.png';
-    case '02n':
-      return baseWeatherUrl + 'night_full_moon_partial_cloud.png';
-    case '03d':
-      return baseWeatherUrl + 'cloudy.png';
-    case '03n':
-      return baseWeatherUrl + 'cloudy.png';
-    case '04d':
-      return baseWeatherUrl + 'angry_clouds.png';
-    case '04n':
-      return baseWeatherUrl + 'angry_clouds.png';
-    case '09d':
-      return baseWeatherUrl + 'rain.png';
-    case '09n':
-      return baseWeatherUrl + 'rain.png';
-    case '10d':
-      return baseWeatherUrl + 'day_rain.png';
-    case '10n':
-      return baseWeatherUrl + 'night_full_moon_rain.png';
-    case '11d':
-      return baseWeatherUrl + 'thunder.png';
-    case '11n':
-      return baseWeatherUrl + 'thunder.png';
-    case '13d':
-      return baseWeatherUrl + 'day_snow.png';
-    case '13n':
-      return baseWeatherUrl + 'night_full_moon_snow.png';
-    case '50d':
-      return baseWeatherUrl + 'fog.png';
-    case '50n':
-      return baseWeatherUrl + 'fog.png';
-    default:
-      return baseWeatherUrl + 'day_clear.png';
+    case '01d': return baseWeatherUrl + 'day_clear.png';
+    case '01n': return baseWeatherUrl + 'night_full_moon_clear.png';
+    case '02d': return baseWeatherUrl + 'day_partial_cloud.png';
+    case '02n': return baseWeatherUrl + 'night_full_moon_partial_cloud.png';
+    case '03d': return baseWeatherUrl + 'cloudy.png';
+    case '03n': return baseWeatherUrl + 'cloudy.png';
+    case '04d': return baseWeatherUrl + 'angry_clouds.png';
+    case '04n': return baseWeatherUrl + 'angry_clouds.png';
+    case '09d': return baseWeatherUrl + 'rain.png';
+    case '09n': return baseWeatherUrl + 'rain.png';
+    case '10d': return baseWeatherUrl + 'day_rain.png';
+    case '10n': return baseWeatherUrl + 'night_full_moon_rain.png';
+    case '11d': return baseWeatherUrl + 'thunder.png';
+    case '11n': return baseWeatherUrl + 'thunder.png';
+    case '13d': return baseWeatherUrl + 'day_snow.png';
+    case '13n': return baseWeatherUrl + 'night_full_moon_snow.png';
+    case '50d': return baseWeatherUrl + 'fog.png';
+    case '50n': return baseWeatherUrl + 'fog.png';
+    default   : return baseWeatherUrl + 'day_clear.png';
   }
 }
 
@@ -91,6 +72,9 @@ function vibrate(duration) {
   window.navigator.vibrate(duration);
 }
 
+/**
+  update weather data with new information an log timestamp in the console
+*/
 function updateAPIdata() {
   fetch(requestLocationOne)
   .then((response) => {
