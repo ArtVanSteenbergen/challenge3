@@ -37,7 +37,7 @@ function showRickAndMorty() {
     .fromTo('footer #morty .text', 1, {y: '50%', autoAlpha: 0},{text: {value: 'Yes, Rick?'},y:'0%', autoAlpha: 0.75}, '-=3')
     .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0})
 
-    .to('footer #rick .text', 3, {text: {value: 'It looks like we\'re going to land in, *burb*, ' + lowestWindSpeed().name + ' Morty.'}, autoAlpha: 0.75}, '-=1')
+    .to('footer #rick .text', 3, {text: {value: `It looks like we\'re going to land in, *burb*, ${lowestWindSpeed().name} Morty.`}, autoAlpha: 0.75}, '-=1')
     .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
     .to('footer #morty .text', 2, {text: {value: 'Okay, but.. but.. but why Rick?'}, autoAlpha: 0.75}, '-=1')
@@ -49,7 +49,7 @@ function showRickAndMorty() {
     .to('footer #rick .text', 3, {text: {value: 'Do you want to crash and die?'}, autoAlpha: 0.75})
     .to('footer #rick .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
-    .to('footer #morty .text', 2, {text: {value: 'No Rick, let\'s go to '+ lowestWindSpeed().name + ' then.'}, autoAlpha: 0.75}, '-=1')
+    .to('footer #morty .text', 2, {text: {value: `No Rick, let\'s go to ${lowestWindSpeed().name} then.`}, autoAlpha: 0.75}, '-=1')
     .to('footer #morty .text', 1, {text: {value: ''}, autoAlpha: 0}, '+=2')
 
     .to('footer #rick', 1, {x: '-100%', autoAlpha: 0}, '-=1')
@@ -66,7 +66,7 @@ function showDigitalClock(h,i,s) {
   h = (h < 10) ? '0' + h : h;
   i = (i < 10) ? '0' + i : i;
   s = (s < 10) ? '0' + s : s;
-  his = h + ':' + i + ':' + s;
+  his = `${h}:${i}:${s}`;
   
   TweenMax.set(TIMEONSCREEN,{text:{value: his}});
 }
@@ -146,7 +146,7 @@ function getAPIdata() {
     $('footer #morty .avatar').attr({'src':response.image, 'alt':response.name,'title':response.name});
     showRickAndMorty(response);
   });
-  console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
+  console.log(`%cLast updated: ${new Date}`, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
 
 /**
