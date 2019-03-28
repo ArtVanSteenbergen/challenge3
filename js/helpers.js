@@ -14,10 +14,11 @@ function nth(d) {
 }
 
 /**
-	@param weatherType is code for a type of weather form the OpenWeather API
+	@param weatherType is code for a type of weather form the Open Weather Map API
 	@returns the URL of the corresponding image
 */
 function returnIconUrl(weatherType) {
+  //return 'https://airvisual.com/images/'+weatherType+'.png';
   switch(weatherType) {
     case '01d': return baseWeatherUrl + 'day_clear.png';
     case '01n': return baseWeatherUrl + 'night_full_moon_clear.png';
@@ -57,7 +58,7 @@ function lowestWindSpeed() {
 }
 
 /**
-	@param location is a Open Weather API Object
+	@param location is a Open Weather Map API Object
 	@returns true if wind speed op location object is under threshold
 */
 function goForLanding(location) {
@@ -102,4 +103,25 @@ function updateAPIdata() {
     showLocation(locations[2], '#locationThree', 'locationThree', 2);
   });
   console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
+}
+
+if ("geolocation" in navigator) {
+    // Do something with coordinates returned
+    function processCoords(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        let requestCurrentLocation = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&lat=${latitude}&lon=${longitude}&units=metric`;
+        fetch(requestCurrentLocation)
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          locations[1] = response;
+          showLocation(locations[1], '#locationTwo', 'locationTwo', 2);
+        });
+    }
+
+    // Fetch Coordinates
+    navigator.geolocation.getCurrentPosition(processCoords);
 }

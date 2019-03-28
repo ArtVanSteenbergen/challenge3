@@ -13,7 +13,8 @@ MAXWINDSPEED = 25/3.6; //25km/h in m/s
 	Variables
 */
 var
-citys = ['Cape Canaveral', 'Brownsville', 'Los Angeles'],
+citys = ['Cape Canaveral', 'Port Isabel', 'Long Beach'],
+// citys = ['Cape Canaveral', 'Brownsville', 'Los Angeles'],
 // citys = ['The Hague', 'Limburg', 'Groningen'],
 // citys = ['London', 'New Jersey', 'Washington'],
 // citys = ['Alaska','Hawai', 'Ohio'],

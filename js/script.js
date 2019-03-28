@@ -1,5 +1,5 @@
 /**
-  function that creates tweens and timelines to show Open Weather API data
+  function that creates tweens and timelines to show Open Weather Map API data
 */
 function showLocation(response, id, string, number) {
   $(id + ' .weatherIcon').attr({'src': returnIconUrl(response.weather[0].icon), 'alt': response.weather[0].description, 'title': response.weather[0].description});
@@ -150,7 +150,7 @@ function getAPIdata() {
 }
 
 /**
-  fetch date from the Open Weather API and the Rick and Morty API 
+  fetch date from the Open Weather Map API and the Rick and Morty API 
 */
 getAPIdata();
 
