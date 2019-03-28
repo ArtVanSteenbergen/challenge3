@@ -104,14 +104,3 @@ function updateAPIdata() {
   });
   console.log(`%cLast updated: ${new Date}`, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
-
-//put current location as 
-if ('geolocation' in navigator) {
-    function getCoords(gps) {
-        let latitude = gps.coords.latitude;
-        let longitude = gps.coords.longitude;
-        requestLocationTwo = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&lat=${latitude}&lon=${longitude}&units=metric`;
-        updateAPIdata();
-    }
-    navigator.geolocation.getCurrentPosition(getCoords);
-}
