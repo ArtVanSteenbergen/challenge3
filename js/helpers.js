@@ -111,17 +111,9 @@ if ("geolocation" in navigator) {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
 
-        let requestCurrentLocation = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&lat=${latitude}&lon=${longitude}&units=metric`;
-        fetch(requestCurrentLocation)
-        .then((response) => {
-          return response.json();
-        })
-        .then((response) => {
-          locations[1] = response;
-          showLocation(locations[1], '#locationTwo', 'locationTwo', 2);
-        });
+        requestLocationTwo = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&lat=${latitude}&lon=${longitude}&units=metric`;
+        updateAPIdata();
     }
-
     // Fetch Coordinates
     navigator.geolocation.getCurrentPosition(processCoords);
 }
