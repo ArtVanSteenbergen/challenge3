@@ -6,10 +6,10 @@ function nth(d) {
   if (d > 3 && d < 21)
     return d+'th'; 
   switch (d % 10) {
-    case 1:  return d+"st";
-    case 2:  return d+"nd";
-    case 3:  return d+"rd";
-    default: return d+"th";
+    case 1:  return `${d}st`;
+    case 2:  return `${d}nd`;
+    case 3:  return `${d}rd`;
+    default: return `${d}th`;
   }
 }
 
@@ -20,25 +20,25 @@ function nth(d) {
 function returnIconUrl(weatherType) {
   //return 'https://airvisual.com/images/'+weatherType+'.png';
   switch(weatherType) {
-    case '01d': return baseWeatherUrl + 'day_clear.png';
-    case '01n': return baseWeatherUrl + 'night_full_moon_clear.png';
-    case '02d': return baseWeatherUrl + 'day_partial_cloud.png';
-    case '02n': return baseWeatherUrl + 'night_full_moon_partial_cloud.png';
-    case '03d': return baseWeatherUrl + 'cloudy.png';
-    case '03n': return baseWeatherUrl + 'cloudy.png';
-    case '04d': return baseWeatherUrl + 'angry_clouds.png';
-    case '04n': return baseWeatherUrl + 'angry_clouds.png';
-    case '09d': return baseWeatherUrl + 'rain.png';
-    case '09n': return baseWeatherUrl + 'rain.png';
-    case '10d': return baseWeatherUrl + 'day_rain.png';
-    case '10n': return baseWeatherUrl + 'night_full_moon_rain.png';
-    case '11d': return baseWeatherUrl + 'thunder.png';
-    case '11n': return baseWeatherUrl + 'thunder.png';
-    case '13d': return baseWeatherUrl + 'day_snow.png';
-    case '13n': return baseWeatherUrl + 'night_full_moon_snow.png';
-    case '50d': return baseWeatherUrl + 'fog.png';
-    case '50n': return baseWeatherUrl + 'fog.png';
-    default   : return baseWeatherUrl + 'day_clear.png';
+    case '01d': return `${baseWeatherUrl}day_clear.png`;
+    case '01n': return `${baseWeatherUrl}night_full_moon_clear.png`;
+    case '02d': return `${baseWeatherUrl}day_partial_cloud.png`;
+    case '02n': return `${baseWeatherUrl}night_full_moon_partial_cloud.png`;
+    case '03d': return `${baseWeatherUrl}cloudy.png`;
+    case '03n': return `${baseWeatherUrl}cloudy.png`;
+    case '04d': return `${baseWeatherUrl}angry_clouds.png`;
+    case '04n': return `${baseWeatherUrl}angry_clouds.png`;
+    case '09d': return `${baseWeatherUrl}rain.png`;
+    case '09n': return `${baseWeatherUrl}rain.png`;
+    case '10d': return `${baseWeatherUrl}day_rain.png`;
+    case '10n': return `${baseWeatherUrl}night_full_moon_rain.png`;
+    case '11d': return `${baseWeatherUrl}thunder.png`;
+    case '11n': return `${baseWeatherUrl}thunder.png`;
+    case '13d': return `${baseWeatherUrl}day_snow.png`;
+    case '13n': return `${baseWeatherUrl}night_full_moon_snow.png`;
+    case '50d': return `${baseWeatherUrl}fog.png`;
+    case '50n': return `${baseWeatherUrl}fog.png`;
+    default   : return `${baseWeatherUrl}day_clear.png`;
   }
 }
 
@@ -102,18 +102,16 @@ function updateAPIdata() {
     locations[2] = response;
     showLocation(locations[2], '#locationThree', 'locationThree', 2);
   });
-  console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
+  console.log(`%cLast updated: ${new Date}`, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
 
-if ("geolocation" in navigator) {
-    // Do something with coordinates returned
-    function processCoords(position) {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-
+//put current location as 
+if ('geolocation' in navigator) {
+    function getCoords(gps) {
+        let latitude = gps.coords.latitude;
+        let longitude = gps.coords.longitude;
         requestLocationTwo = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&lat=${latitude}&lon=${longitude}&units=metric`;
         updateAPIdata();
     }
-    // Fetch Coordinates
-    navigator.geolocation.getCurrentPosition(processCoords);
+    navigator.geolocation.getCurrentPosition(getCoords);
 }

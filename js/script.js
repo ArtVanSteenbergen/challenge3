@@ -86,7 +86,7 @@ function showTime() {
   m = MONTHSOFYEAR[datetime.getMonth()];
   Y = datetime.getFullYear();
 
-  date = n + ', ' + m + ' ' +  nth(d) + ' ' + Y;
+  date = `${n} ${m} ${nth(d)} ${Y}`;
   if (DATEONSCREEN.html() != date) {showDate(date);}
 
   showDigitalClock(h,i,s);
