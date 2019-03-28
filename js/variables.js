@@ -1,13 +1,17 @@
-// all the constants
+/**
+	Constants
+*/
 const
 HTML = $('html'),
 DATEONSCREEN = $('#date'),
 TIMEONSCREEN = $('#time'),
 DAYSOFWEEK = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
 MONTHSOFYEAR = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-MAXWINDSPEED = 25/3.6; // 25km/h in m/s
+MAXWINDSPEED = 25/3.6; //25km/h in m/s
 
-// all the variables
+/**
+	Variables
+*/
 var
 citys = ['Cape Canaveral', 'Brownsville', 'Los Angeles'],
 // citys = ['The Hague', 'Limburg', 'Groningen'],

@@ -1,3 +1,6 @@
+/**
+  function that creates tweens and timelines to show Open Weather API data
+*/
 function showLocation(response, id, string, number) {
   $(id + ' .weatherIcon').attr({'src': returnIconUrl(response.weather[0].icon), 'alt': response.weather[0].description, 'title': response.weather[0].description});
   this[string+'TL'].to(this[string+ 'DirectionTween'], 1, {progress: response.wind.deg / 360}, string)
@@ -20,8 +23,11 @@ function showLocation(response, id, string, number) {
   }
 }
 
-function showRickAndMorty() {
 
+/**
+  function that creates a dialog  with Rick and Morty about where they chould land
+*/
+function showRickAndMorty() {
     tl.from('footer #rick', 1, {x: '-100%', autoAlpha: 0, ease: Power4.easeOut})
     .fromTo('footer #rick .text', 1,{y: '50%', autoAlpha: 0},{text: {value: 'Hey, Morty!'},y:'0%', autoAlpha: 0.75})
 
@@ -53,6 +59,9 @@ function showRickAndMorty() {
     .from('#restartBtn',2,{y:'-700%', autoAlpha: 0, ease: Bounce.easeOut}, '-=1');
 }
 
+/**
+  functions that sets Tween for new time
+*/
 function showDigitalClock(h,i,s) {
   h = (h < 10) ? '0' + h : h;
   i = (i < 10) ? '0' + i : i;
@@ -62,6 +71,10 @@ function showDigitalClock(h,i,s) {
   TweenMax.set(TIMEONSCREEN,{text:{value: his}});
 }
 
+
+/**
+  function that get the current date and time calls other functions to display it
+*/
 function showTime() {
   datetime =  new Date();
 
@@ -79,6 +92,9 @@ function showTime() {
   showDigitalClock(h,i,s);
 }
 
+/**
+  function that puts current date on screen
+*/
 function showDate(date) {
   if (DATEONSCREEN.html() != '') {
     TweenMax.from(DATEONSCREEN, 3, {y: '-50%', autoAlpha: 0, ease: Elastic.easeOut});
@@ -86,6 +102,9 @@ function showDate(date) {
   DATEONSCREEN.html(date);
 }
 
+/**
+  excecute multiple fetches and use returned data to display that information
+*/
 function getAPIdata() {
   fetch(requestLocationOne)
   .then((response) => {
@@ -130,17 +149,31 @@ function getAPIdata() {
   console.log('%cLast updated: ' + new Date, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
 
+/**
+  fetch date from the Open Weather API and the Rick and Morty API 
+*/
 getAPIdata();
 
+/**
+  initial excution of te clock
+*/
 showTime();
 
+/**
+  update time every second
+*/
 setInterval(function() {
   showTime();
 }, 1000);
 
+/**
+  updateAPIdata every ten minutes
+*/
 setInterval(function() {
   updateAPIdata();
 }, 600000);
 
-
-$('#restartBtn').click(()=>{tl.restart();vibrate([200,100,50,50,50,50,200,100]);});
+/**
+  on click restart button, restart Rick and Morty dialog timeline and vibrate phone
+*/
+$('#restartBtn').click(()=>{tl.restart();vibrate([200,100,200,100,200,100,400,100,400,100,400,100,200,100,200,100,200]);});
