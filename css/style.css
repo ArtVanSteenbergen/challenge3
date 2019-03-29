@@ -220,6 +220,25 @@ footer .text {
 	}
 }
 
-@media screen and (min-width: 1024px) and (max-height: 500px) {
+@media screen and (orientation: landscape) and (max-height: 460px) {
+	article {
+		padding-top: 32px
+	}
+	#rick, #morty {
+		width: 150px;
+	}
 
+	#rick .text, #morty .text {
+		width: 150px;
+	}
+	.windmill {
+		margin-top: 0;
+		transform: translateX(-100%);
+	}
+	.windDirection {
+		transform: translateX(100%);
+	}
+	h1 {
+		margin: 0;
+	}
 }
