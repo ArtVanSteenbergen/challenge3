@@ -156,7 +156,6 @@ if ('geolocation' in navigator) {
         let latitude = gps.coords.latitude;
         let longitude = gps.coords.longitude;
 
-        getElevationData(latitude, longitude, 'kees');
         requestLocationTwo = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&lat=${latitude}&lon=${longitude}&units=metric`;
         updateAPIdata();
     }
@@ -191,28 +190,3 @@ setInterval(function() {
   on click restart button, restart Rick and Morty dialog timeline and vibrate phone
 */
 $('#restartBtn').click(()=>{tl.restart();vibrate([200,100,200,100,200,100,400,100,400,100,400,100,200,100,200,100,200]);});
-
-function getElevationData(latitude, longitude, id) {
-    var accessToken = 'H46OOtxRQ8dbQhohrbqrSsT7nQRj9zoT7ZVUuGjxDBdJnbKftNpp5S3wWRBwehca';
-
-    var request = 'https://api.jawg.io/elevations?locations=' + latitude + "," + longitude + "&access-token=" + accessToken;
-
-    fetch(request)
-
-    .then(function(response) {
-        if(!response.ok) throw Error(response.statusText);
-        return response.json();
-    })
-    
-    .then(function(response) {
-        onElevationSucces(response,id);  
-    })
-    
-    .catch(function (error) {
-        onElevationError(error);
-    });
-}
-
-function onElevationSucces(response, id) {
-    console.log(response.elevation);
-}
