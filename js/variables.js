@@ -33,7 +33,7 @@ s = datetime.getSeconds(),
 n = DAYSOFWEEK[datetime.getDay()],
 d = datetime.getDate(),
 m = MONTHSOFYEAR[datetime.getMonth()],
-Y = datetime.getFullYear(),
+Y = datetime.getFullYear() + 49,
 
 requestLocationOne = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=${encodeURI(citys[0])}&units=metric`,
 requestLocationTwo = `https://api.openweathermap.org/data/2.5/weather?appid=b0c8dafa512a0134e90df6ece3c2b7a2&q=${encodeURI(citys[1])}&units=metric`,

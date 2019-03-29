@@ -84,7 +84,7 @@ function showTime() {
   n = DAYSOFWEEK[datetime.getDay()];
   d = datetime.getDate();
   m = MONTHSOFYEAR[datetime.getMonth()];
-  Y = datetime.getFullYear();
+  Y = datetime.getFullYear() + 49;
 
   date = `${n} ${m} ${nth(d)} ${Y}`;
   if (DATEONSCREEN.html() != date) {showDate(date);}
