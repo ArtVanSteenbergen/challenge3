@@ -117,3 +117,8 @@ function updateAPIdata() {
   });
   console.log(`%cLast updated: ${new Date}`, 'font-weight: bold; font-family: sans-serif; font-size: 16px; color: #004F84;');
 }
+
+function isPortrait() {
+  if (window.innerHeight > window.innerWidth) portrait = true;
+  if (window.innerHeight < window.innerWidth) portrait = false;
+}

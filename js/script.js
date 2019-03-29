@@ -190,3 +190,9 @@ setInterval(function() {
   on click restart button, restart Rick and Morty dialog timeline and vibrate phone
 */
 $('#restartBtn').click(()=>{tl.restart();vibrate([200,100,200,100,200,100,400,100,400,100,400,100,200,100,200,100,200]);});
+
+$(window).resize(()=>{
+  isPortrait();
+  if (portrait) TweenMax.to('article',1,{'background-size':'300%'});
+  if (!portrait) TweenMax.to('article',1,{'background-size':'100%'});
+});

@@ -20,6 +20,7 @@ citys = ['Cape Canaveral', 'Port Isabel', 'Long Beach'],
 // citys = ['Alaska','Hawai', 'Ohio'],
 
 locations = new Array,
+portrait,
 
 tl = new TimelineMax(),
 locationOneTL = new TimelineMax(),
