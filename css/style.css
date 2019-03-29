@@ -234,9 +234,11 @@ footer .text {
 	.windmill {
 		margin-top: 0;
 		transform: translateX(-100%);
+		z-index: 1;
 	}
 	.windDirection {
 		transform: translateX(100%);
+		z-index: 2;
 	}
 	h1 {
 		margin: 0;
