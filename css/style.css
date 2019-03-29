@@ -220,7 +220,7 @@ footer .text {
 	}
 }
 
-@media screen and (orientation: landscape) and (max-height: 460px) {
+@media screen and (orientation: landscape) and (max-height: 500px) {
 	article {
 		padding-top: 32px
 	}
