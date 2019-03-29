@@ -13,6 +13,19 @@ function nth(d) {
   }
 }
 
+function tempIcon(temp) {
+  if (temp < 0)
+    return '<i class="fas fa-thermometer-empty"></i> ';
+  if (temp < 10)
+    return '<i class="fas fa-thermometer-quarter"></i> ';
+  if (temp < 20)
+    return '<i class="fas fa-thermometer-half"></i> ';
+  if (temp < 30)
+    return '<i class="fas fa-thermometer-three-quarters"></i> ';
+  
+  return '<i class="fas fa-thermometer-full"></i> ';
+}
+
 /**
 	@param weatherType is code for a type of weather form the Open Weather Map API
 	@returns the URL of the corresponding image

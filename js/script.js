@@ -7,7 +7,7 @@ function showLocation(response, id, string, number) {
   .to(this[string + 'Windmill'], (15 / response.wind.speed), {progress: 1, ease: Linear.easeNone, repeat: -1}, string)
   .to(id + ' .windSpeed', 1, {text: {value: Math.round(response.wind.speed * 3.6)+'km/h'}}, string)
   .to(id + ' .cityName', 1, {text: {value: response.name}}, string)
-  .fromTo(id + ' .temp',1, {text: {value: response.main.temp + '°C'}, autoAlpha: 0}, {text: {value: response.main.temp + '°C'}, autoAlpha:1}, string+'+=0.5');
+  .fromTo(id + ' .temp',1, {text: {value: response.main.temp + '°C'}, autoAlpha: 0}, {text: {value: tempIcon(response.main.temp) + response.main.temp + '°C'}, autoAlpha:1}, string+'+=0.5');
   
   if (number == 1) {
     TweenMax.fromTo('header', 3, {y: '-50%', autoAlpha: 0}, {y: '0%', autoAlpha: 1, ease: Elastic.easeOut});
